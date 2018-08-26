@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLocation"
+            type="boolean" />
+
+        <variable
+            name="isProgressBar"
+            type="boolean" />
+
+        <variable
+            name="noData"
+            type="boolean" />
+
+        <variable
+            name="data"
+            type="addcolour.co.za.testapp.model.WeatherList" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLines="1"
+            android:text="@string/txt_weather_app"
+            android:textStyle="bold"
+            android:visibility="@{!isLocation ? View.VISIBLE : View.GONE}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{noData ? View.VISIBLE : View.GONE}">
+
+            <include
+                android:id="@+id/content_error"
+                layout="@layout/content_error" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{!noData ? View.VISIBLE : View.GONE}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{isLocation ? View.VISIBLE : View.GONE}">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="@{!isProgressBar ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/progressBar"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/margin_10"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-condensed"
+                    android:maxLines="1"
+                    android:text="@string/loading"
+                    android:visibility="@{!isProgressBar ? View.VISIBLE : View.GONE}" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{isProgressBar ? View.VISIBLE : View.GONE}"
+                    app:relativeLayout="@{data.getMain()}">
+
+                    <include
+                        android:id="@+id/content_current_weather"
+                        layout="@layout/content_current_weather"
+                        bind:data="@{data}" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/content_current_weather" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

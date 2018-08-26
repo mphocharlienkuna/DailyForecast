@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Test App</string>
+
+    <string name="location_permission_denied_dialog_title">Location permission request</string>
+    <string name="location_permission_denied_dialog_feedback">Audio recording will not be available until you accept the permission request</string>
+
+    <string name="loading">Loading…</string>
+
+    <string name="txt_weather_app">WEATHER APP</string>
+    <string name="txt_min">min</string>
+    <string name="txt_current">current</string>
+    <string name="txt_max">max</string>
+    <string name="txt_no_data_to_display">NO DATA TO DISPLAY</string>
+    <string name="btn_retry">RETRY</string>
+
+</resources>
