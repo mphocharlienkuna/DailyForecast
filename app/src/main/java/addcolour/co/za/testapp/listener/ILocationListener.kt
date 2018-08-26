@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.Task
 class ILocationListener @SuppressLint("MissingPermission")
 private constructor(private val mContext: Context) : LiveData<Location>() {
 
-
     private val mFusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mContext)
     private val mSettingsClient: SettingsClient = LocationServices.getSettingsClient(mContext)
 
