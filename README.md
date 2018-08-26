@@ -1,4 +1,4 @@
-# DailyForecast
+# DailyForecast (Kotlin & Java)
 
   <strong>Versions.gradle</strong>
   - <p>Shared file between builds so that they can all use the same dependencies and maven repositories.</p>
