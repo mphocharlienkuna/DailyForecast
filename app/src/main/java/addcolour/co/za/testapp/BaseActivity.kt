@@ -15,6 +15,11 @@ import com.karumi.dexter.listener.single.PermissionListener
 
 import addcolour.co.za.testapp.listener.IErrorListener
 import addcolour.co.za.testapp.listener.IPermissionListener
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
+import android.support.design.widget.Snackbar
+import android.view.View
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -26,7 +31,15 @@ abstract class BaseActivity : AppCompatActivity() {
         createPermissionListeners()
     }
 
-    abstract fun onPermissionGranted(permissionName: String);
+    abstract fun onPermissionGranted(permissionName: String)
+
+    fun onPermissionDenied() {
+        showSnackBar(R.string.permission_denied_explanation,
+                R.string.settings, View.OnClickListener {
+            // check for permanent denial of any permission
+            openSettings()
+        })
+    }
 
     fun requestPermission(permission: String) {
         Dexter.withActivity(this)
@@ -59,9 +72,25 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    private fun openSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri = Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        startActivityForResult(intent, 101)
+    }
+
     fun errorMessage(errorMessage: String) {
         Log.e(TAG, errorMessage)
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+    }
+
+    private fun showSnackBar(mainTextStringId: Int, actionStringId: Int,
+                             listener: View.OnClickListener) {
+        Snackbar.make(
+                findViewById(android.R.id.content),
+                getString(mainTextStringId),
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(actionStringId), listener).show()
     }
 
     companion object {

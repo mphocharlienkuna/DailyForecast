@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Test App</string>
-
-    <string name="location_permission_denied_dialog_title">Location permission request</string>
-    <string name="location_permission_denied_dialog_feedback">Audio recording will not be available until you accept the permission request</string>
+    <string name="settings">Settings</string>
 
     <string name="loading">Loading…</string>
+
+    <string name="location_permission_denied_dialog_title">Location permission request</string>
+    <string name="location_permission_denied_dialog_feedback">Location permission will not
+        be available until you accept the permission request</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
 
     <string name="txt_weather_app">WEATHER APP</string>
     <string name="txt_min">min</string>

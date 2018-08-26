@@ -6,7 +6,6 @@ import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.util.Log
-import android.view.WindowManager
 
 import addcolour.co.za.testapp.databinding.ActivityMainBinding
 import addcolour.co.za.testapp.helper.DateHelper
@@ -14,7 +13,6 @@ import addcolour.co.za.testapp.listener.ILocationListener
 import addcolour.co.za.testapp.model.ILocation
 import addcolour.co.za.testapp.model.WeatherList
 import addcolour.co.za.testapp.utils.Constant
-import android.app.PendingIntent.getActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -33,8 +31,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 

@@ -14,7 +14,9 @@ class IPermissionListener(private val mBaseActivity: BaseActivity) : PermissionL
         mBaseActivity.onPermissionGranted(response.permissionName)
     }
 
-    override fun onPermissionDenied(response: PermissionDeniedResponse) {}
+    override fun onPermissionDenied(response: PermissionDeniedResponse) {
+        mBaseActivity.onPermissionDenied()
+    }
 
     override fun onPermissionRationaleShouldBeShown(permission: PermissionRequest,
                                                     token: PermissionToken) {
