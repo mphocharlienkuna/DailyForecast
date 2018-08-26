@@ -15,9 +15,9 @@
   <strong>Other Apps</strong>
   - <p><strong><a href="https://play.google.com/store/apps/details?id=za.co.addcolour.tellabuddy">Tell A Buddy - Counseling Online</a></strong></p>
   <p><strong>Screenshots</strong></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/one.jpg"/></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/two.jpg"/></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/three.jpg"/></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/four.jpg"/></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/five.jpg"/></p>
-  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/tree/master/app/src/main/res/drawable/six.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/one.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/two.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/three.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/four.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/five.jpg"/></p>
+  <p align="center"><img src="https://github.com/AddColourAndroid/DailyForecast/blob/master/app/src/main/res/drawable/six.jpg"/></p>
