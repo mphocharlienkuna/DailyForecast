@@ -11,7 +11,7 @@
   <strong>ImageView</strong>
   - <p><strong><a href="https://github.com/bumptech/glide">Glide</a></strong></p>
   <strong>Downlod APK</strong>
-  - <p><strong><a href="https://github.com/AddColourAndroid/DailyForecast/tree/master/APK/app-debug.apk" download>apk file</a></strong></p>
+  - <p><strong><a href="https://github.com/AddColourAndroid/DailyForecast/blob/master/APK/app-debug.apk" download>apk file</a></strong></p>
   <strong>Other Apps</strong>
   - <p><strong><a href="https://play.google.com/store/apps/details?id=za.co.addcolour.tellabuddy">Tell A Buddy - Counseling Online</a></strong></p>
   <p><strong>Screenshots</strong></p>
