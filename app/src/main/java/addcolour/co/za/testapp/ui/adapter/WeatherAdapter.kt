@@ -1,21 +1,21 @@
-package addcolour.co.za.testapp.adapter
+package addcolour.co.za.testapp.ui.adapter
 
-import android.databinding.DataBindingUtil
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import addcolour.co.za.testapp.R
 import addcolour.co.za.testapp.databinding.RowItemWeatherBinding
 import addcolour.co.za.testapp.model.WeatherList
-import addcolour.co.za.testapp.viewHolder.WeatherViewHolder
+import addcolour.co.za.testapp.ui.viewholder.WeatherViewHolder
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 
 class WeatherAdapter : RecyclerView.Adapter<WeatherViewHolder>() {
 
     private var mList: List<WeatherList>? = null
 
-    fun setWeatherListList(WeatherListList: List<WeatherList>) {
+    fun setList(WeatherListList: List<WeatherList>) {
         if (mList == null) {
             mList = WeatherListList
             notifyItemRangeInserted(0, WeatherListList.size)

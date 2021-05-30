@@ -10,13 +10,14 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/layout_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="@dimen/margin_16">
 
         <TextView
-            android:id="@+id/textViewDay"
+            android:id="@+id/text_view_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
@@ -29,7 +30,8 @@
             android:textColor="@color/colorBorder"
             android:textSize="@dimen/text_size_16" />
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_image_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
@@ -37,18 +39,22 @@
             android:gravity="center_horizontal|center_vertical">
 
             <ImageView
-                android:id="@+id/imageViewWeatherIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:id="@+id/image_view_weather_icon"
+                android:layout_width="@dimen/image_view_height"
+                android:layout_height="@dimen/image_view_height"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/margin_10"
-                android:layout_marginRight="@dimen/margin_10"
                 android:src="@drawable/ic_rain"
-                app:imageView="@{data.getMain()}" />
-        </RelativeLayout>
+                app:imageView="@{data.getMain()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textViewTemperature"
+            android:id="@+id/text_view_temperature"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"

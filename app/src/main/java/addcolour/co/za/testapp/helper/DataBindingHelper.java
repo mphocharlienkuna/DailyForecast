@@ -1,10 +1,12 @@
 package addcolour.co.za.testapp.helper;
 
-import android.databinding.BindingAdapter;
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
@@ -14,15 +16,16 @@ import addcolour.co.za.testapp.R;
 
 public class DataBindingHelper {
 
-    private static String CLOUDY = "Clouds";
-    private static String RAINY = "Rain";
-    private static String SUNNY = "Clear";
+    private static final String CLOUDY = "Clouds";
+    private static final String RAINY = "Rain";
+    private static final String SUNNY = "Clear";
 
     private static Integer imagePath;
 
+    @SuppressLint("SetTextI18n")
     @BindingAdapter({"textView"})
     public static void setTextView(TextView textView, double value) {
-        textView.setText(String.valueOf(Math.round(value) + "" + (char) 0x00B0));
+        textView.setText(Math.round(value) + "" + (char) 0x00B0);
     }
 
     @BindingAdapter({"relativeLayout"})

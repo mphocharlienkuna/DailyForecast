@@ -16,5 +16,6 @@
     <dimen name="text_size_54">54sp</dimen>
 
     <!-- -->
+    <dimen name="image_view_height">24dp</dimen>
 
 </resources>

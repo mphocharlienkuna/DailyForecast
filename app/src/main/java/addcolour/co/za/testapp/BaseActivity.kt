@@ -1,65 +1,50 @@
 package addcolour.co.za.testapp
 
-import android.content.IntentSender
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Toast
-
-import com.google.android.gms.common.api.ResolvableApiException
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.listener.PermissionRequestErrorListener
-import com.karumi.dexter.listener.single.CompositePermissionListener
-import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
-import com.karumi.dexter.listener.single.PermissionListener
-
-import addcolour.co.za.testapp.listener.IErrorListener
-import addcolour.co.za.testapp.listener.IPermissionListener
+import addcolour.co.za.testapp.app.Constant
+import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.net.Uri
 import android.provider.Settings
-import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.material.snackbar.Snackbar
+import com.nabinbhandari.android.permissions.PermissionHandler
+import com.nabinbhandari.android.permissions.Permissions
+import java.util.*
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    private var mPermissionListener: PermissionListener? = null
-    private var errorListener: PermissionRequestErrorListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        createPermissionListeners()
-    }
-
+    private var mSnackBar: Snackbar? = null
     abstract fun onPermissionGranted(permissionName: String)
 
-    fun onPermissionDenied() {
-        showSnackBar(R.string.permission_denied_explanation,
-                R.string.settings, View.OnClickListener {
-            // check for permanent denial of any permission
-            openSettings()
-        })
+    private val permissionHandler = object : PermissionHandler() {
+        override fun onGranted() {
+            onPermissionGranted(Constant.LOCATION_PERMISSION)
+        }
+
+        override fun onDenied(context: Context?, deniedPermissions: ArrayList<String>?) {
+            onPermissionDenied()
+        }
+
+        override fun onJustBlocked(context: Context?, justBlockedList: ArrayList<String>?, deniedPermissions: ArrayList<String>?) {
+            onPermissionDenied()
+        }
     }
 
     fun requestPermission(permission: String) {
-        Dexter.withActivity(this)
-                .withPermission(permission)
-                .withListener(mPermissionListener)
-                .withErrorListener(errorListener)
-                .check()
+        Permissions.check(this, permission, null, permissionHandler)
     }
 
-    private fun createPermissionListeners() {
-        val feedbackViewPermissionListener = IPermissionListener(this)
-        val dialogOnDeniedPermissionListener = DialogOnDeniedPermissionListener.Builder.withContext(this)
-                .withTitle(R.string.location_permission_denied_dialog_title)
-                .withMessage(R.string.location_permission_denied_dialog_feedback)
-                .withButtonText(android.R.string.ok)
-                .build()
-
-        mPermissionListener = CompositePermissionListener(feedbackViewPermissionListener,
-                dialogOnDeniedPermissionListener)
-        errorListener = IErrorListener()
+    fun onPermissionDenied() {
+        showSnackBar(R.string.permission_denied_explanation,
+                R.string.settings) {
+            // check for permanent denial of any permission
+            openSettings()
+        }
     }
 
     fun showLocationSettings(rae: ResolvableApiException) {
@@ -73,10 +58,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     private fun openSettings() {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        val uri = Uri.fromParts("package", packageName, null)
-        intent.data = uri
-        startActivityForResult(intent, 101)
+        startActivity(Intent().apply {
+            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            data = Uri.fromParts("package", packageName, null)
+        })
     }
 
     fun errorMessage(errorMessage: String) {
@@ -84,19 +69,22 @@ abstract class BaseActivity : AppCompatActivity() {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 
-    private fun showSnackBar(mainTextStringId: Int, actionStringId: Int,
-                             listener: View.OnClickListener) {
-        Snackbar.make(
+    fun showSnackBar(mainTextStringId: Int, actionStringId: Int,
+                     listener: View.OnClickListener) {
+        mSnackBar = Snackbar.make(
                 findViewById(android.R.id.content),
                 getString(mainTextStringId),
                 Snackbar.LENGTH_INDEFINITE)
-                .setAction(getString(actionStringId), listener).show()
+                .setAction(getString(actionStringId), listener)
+        mSnackBar?.show()
+    }
+
+    fun dismissSnackBar() {
+        mSnackBar?.dismiss()
     }
 
     companion object {
-
         private val TAG = BaseActivity::class.java.simpleName
-
         private const val REQUEST_CHECK_SETTINGS = 0x1
     }
 }

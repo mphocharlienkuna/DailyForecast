@@ -1,19 +1,25 @@
-package addcolour.co.za.testapp.listener
-
-import android.annotation.SuppressLint
-import android.arch.lifecycle.LiveData
-import android.content.Context
-import android.location.Location
-
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.ResolvableApiException
+package addcolour.co.za.testapp.ui
 
 import addcolour.co.za.testapp.BaseActivity
+import android.annotation.SuppressLint
+import android.content.Context
+import android.location.Location
 import android.os.Looper
-import com.google.android.gms.location.*
-import com.google.android.gms.tasks.Task
+import androidx.lifecycle.LiveData
+import com.huawei.hmf.tasks.Task
+import com.huawei.hms.common.ApiException
+import com.huawei.hms.common.ResolvableApiException
+import com.huawei.hms.location.FusedLocationProviderClient
+import com.huawei.hms.location.LocationCallback
+import com.huawei.hms.location.LocationRequest
+import com.huawei.hms.location.LocationResult
+import com.huawei.hms.location.LocationServices
+import com.huawei.hms.location.LocationSettingsRequest
+import com.huawei.hms.location.LocationSettingsResponse
+import com.huawei.hms.location.LocationSettingsStatusCodes
+import com.huawei.hms.location.SettingsClient
 
-class ILocationListener @SuppressLint("MissingPermission")
+class ILocationKit @SuppressLint("MissingPermission")
 private constructor(private val mContext: Context) : LiveData<Location>() {
 
     private val mFusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mContext)
@@ -32,7 +38,6 @@ private constructor(private val mContext: Context) : LiveData<Location>() {
     }
 
     init {
-
         mFusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null)
                 value = location
@@ -42,10 +47,11 @@ private constructor(private val mContext: Context) : LiveData<Location>() {
     }
 
     private fun createLocationRequest() {
-        mLocationRequest = LocationRequest()
-        mLocationRequest!!.interval = UPDATE_INTERVAL_IN_MILLISECONDS
-        mLocationRequest!!.fastestInterval = FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS
-        mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest = LocationRequest.create().apply {
+            interval = UPDATE_INTERVAL_IN_MILLISECONDS
+            fastestInterval = FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
     }
 
     private fun buildLocationSettingsRequest() {
@@ -64,20 +70,19 @@ private constructor(private val mContext: Context) : LiveData<Location>() {
                     mLocationCallback, Looper.myLooper())
         }
 
-        task.addOnFailureListener { exception ->
-            if (exception is ResolvableApiException) {
-                val statusCode = (exception as ApiException).statusCode
-                when (statusCode) {
-                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> {
-                        (mContext as BaseActivity).showLocationSettings(exception)
-                    }
-                    LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
-                        val errorMessage = "Location settings are inadequate, and cannot be " + "fixed here. Fix in Settings."
-                        (mContext as BaseActivity).errorMessage(errorMessage)
-                    }
-                }
-            }
-        }
+//        task.addOnFailureListener { exception ->
+//            if (exception is ResolvableApiException) {
+//                when ((exception as ApiException).statusCode) {
+//                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> {
+//                        (mContext as BaseActivity).showLocationSettings(exception)
+//                    }
+//                    LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
+//                        val errorMessage = "Location settings are inadequate, and cannot be " + "fixed here. Fix in Settings."
+//                        (mContext as BaseActivity).errorMessage(errorMessage)
+//                    }
+//                }
+//            }
+//        }
     }
 
     override fun onInactive() {
@@ -92,13 +97,13 @@ private constructor(private val mContext: Context) : LiveData<Location>() {
         private const val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = UPDATE_INTERVAL_IN_MILLISECONDS / 2
 
         @SuppressLint("StaticFieldLeak")
-        private var instance: ILocationListener? = null
+        private var instance: ILocationKit? = null
 
-        fun getInstance(appContext: Context): ILocationListener {
+        fun getInstance(appContext: Context): ILocationKit {
             if (instance == null) {
-                instance = ILocationListener(appContext)
+                instance = ILocationKit(appContext)
             }
-            return instance as ILocationListener
+            return instance as ILocationKit
         }
     }
 }

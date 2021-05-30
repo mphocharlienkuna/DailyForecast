@@ -1,3 +1,5 @@
+@file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package addcolour.co.za.testapp.helper
 
 import android.annotation.SuppressLint
