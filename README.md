@@ -18,4 +18,3 @@
   <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/three.jpg"/></p>
   <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/four.jpg"/></p>
   <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/five.jpg"/></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/six.jpg"/></p>
