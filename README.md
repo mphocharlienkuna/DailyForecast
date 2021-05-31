@@ -1,7 +1,7 @@
 # DailyForecast (Kotlin & Java)
 
-  <strong>Versions.gradle</strong>
-  - <p>Shared file between builds so that they can all use the same dependencies and maven repositories.</p>
+  <strong>Note</strong>
+  - <p>The app provides realtime forecast based on current location and supports the latest Huawei devices (Please test on the Huawei P40)</p>
   <strong>Data Binding Library</strong>
   - <p><strong><a href="https://developer.android.com/topic/libraries/data-binding/">Binding</a></strong></p>
   <strong>Fetching data from API</strong>
@@ -13,8 +13,8 @@
   <strong>Other Apps</strong>
   - <p><strong><a href="https://play.google.com/store/apps/details?id=za.co.addcolour.tellabuddy">Tell A Buddy - Counseling Online & Life Management</a></strong></p>
   <p><strong>Screenshots</strong></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/one.jpg"/></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/two.jpg"/></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/three.jpg"/></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/four.jpg"/></p>
-  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/five.jpg"/></p>
+  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/one.jpeg"/></p>
+  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/two.jpeg"/></p>
+  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/three.jpeg"/></p>
+  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/four.jpeg"/></p>
+  <p align="center"><img src="https://github.com/mphocharlienkuna/DailyForecast/blob/master/app/src/main/res/drawable/five.jpeg"/></p>
