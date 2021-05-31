@@ -1,7 +1,7 @@
 # DailyForecast (Kotlin & Java)
 
   <strong>Note</strong>
-  - <p>The app provides realtime forecast based on current location and supports the latest Huawei devices (Please test on the Huawei P40)</p>
+  - <p>Daily Forecast provides realtime weather conditions based on current location and supports the latest Huawei devices (Please test on the Huawei P40)</p>
   <strong>Data Binding Library</strong>
   - <p><strong><a href="https://developer.android.com/topic/libraries/data-binding/">Binding</a></strong></p>
   <strong>Fetching data from API</strong>
