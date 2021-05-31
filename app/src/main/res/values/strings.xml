@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test App</string>
+    <string name="app_name">Daily Forecast</string>
     <string name="settings">Settings</string>
 
     <string name="loading">Loading…</string>
